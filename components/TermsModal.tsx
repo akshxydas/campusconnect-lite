@@ -41,7 +41,7 @@ export default function TermsModal() {
       }}>
         <h2 style={{color:'#555'}}>Terms & Conditions</h2>
         <p style={{ margin: '1rem 0' ,color: '#555' }}>
-          Please accept our <Link href="/terms">Terms and Conditions</Link> before using the app.
+          Please accept our </p><p style={{ margin: '1rem 0' ,color: '#00f' }}><Link href="/terms">Terms and Conditions</Link></p><p style={{ margin: '1rem 0' ,color: '#555' }}> before using the app.
         </p>
         <button
           onClick={acceptTerms}
