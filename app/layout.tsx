@@ -24,8 +24,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+  <nav style={{
+    backgroundColor: '#222',
+    padding: '1rem',
+    display: 'flex',
+    gap: '1rem',
+  }}>
+    <a href="/" style={{ color: '#fff', textDecoration: 'none' }}>Home</a>
+    <a href="/about" style={{ color: '#fff', textDecoration: 'none' }}>About</a>
+    <a href="/privacy" style={{ color: '#fff', textDecoration: 'none' }}>Privacy</a>
+    <a href="/terms" style={{ color: '#fff', textDecoration: 'none' }}>Terms</a>
+    <a href="/disclaimer" style={{ color: '#fff', textDecoration: 'none' }}>Disclaimer</a>
+  </nav>
+  {children}
       </body>
     </html>
   );

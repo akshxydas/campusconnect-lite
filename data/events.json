@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "club": "Coding Club",
+    "name": "Hackathon 101",
+    "location": "Auditorium A",
+    "datetime": "2025-07-15T10:00:00",
+    "description": "A beginner-friendly hackathon event for all coding enthusiasts."
+  },
+  {
+    "id": 2,
+    "club": "Art Club",
+    "name": "Watercolor Workshop",
+    "location": "Art Room",
+    "datetime": "2025-07-20T14:00:00",
+    "description": "Learn the basics of watercolor painting with experts."
+  },
+  {
+    "id": 3,
+    "club": "Music Society",
+    "name": "Open Mic Night",
+    "location": "Cultural Hall",
+    "datetime": "2025-07-22T18:00:00",
+    "description": "Showcase your talent or cheer for your friends at our open mic night."
+  },
+  {
+    "id": 4,
+    "club": "Robotics Club",
+    "name": "Drone Flying Demo",
+    "location": "Playground",
+    "datetime": "2025-07-25T09:00:00",
+    "description": "Watch drones in action and learn how to fly one!"
+  }
+]

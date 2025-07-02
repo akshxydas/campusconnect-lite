@@ -1,95 +1,59 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import events from '../data/events.json';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [searchTerm, setSearchTerm] = useState('');
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const filteredEvents = events.filter(event =>
+    event.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <main style={{ padding: '2rem', fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#f4f4f4', minHeight: '100vh' }}>
+      <header style={{ marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: '#222' }}>CampusConnect Lite</h1>
+        <p style={{ fontSize: '1.1rem', color: '#666' }}>Find upcoming campus events by location</p>
+      </header>
+
+      <input
+        type="text"
+        placeholder="Search by location (e.g., Auditorium A)"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          padding: '0.75rem',
+          marginBottom: '2rem',
+          width: '100%',
+          borderRadius: '6px',
+          border: '1px solid #ccc',
+          fontSize: '1rem'
+        }}
+      />
+
+      {filteredEvents.length > 0 ? (
+        filteredEvents.map(event => (
+          <div
+            key={event.id}
+            style={{
+              marginBottom: '2rem',
+              padding: '1.5rem',
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <h2 style={{ color: '#333', marginBottom: '0.5rem' }}>{event.name}</h2>
+            <p style={{ margin: '0.3rem 0',color: '#555' }}><strong>Club:</strong> {event.club}</p>
+            <p style={{ margin: '0.3rem 0',color: '#555' }}><strong>Location:</strong> {event.location}</p>
+            <p style={{ margin: '0.3rem 0',color: '#555' }}><strong>Date & Time:</strong> {new Date(event.datetime).toLocaleString('en-US')}</p>
+            <p style={{ marginTop: '0.5rem', color: '#555' }}>{event.description}</p>
+          </div>
+        ))
+      ) : (
+        <p style={{ color: '#888' }}>No events found for that location.</p>
+      )}
+    </main>
   );
 }
