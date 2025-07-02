@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import TermsModal from '../components/TermsModal';
+import Link from 'next/link';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,11 +34,14 @@ export default function RootLayout({
     display: 'flex',
     gap: '1rem',
   }}>
-    <a href="/" style={{ color: '#fff', textDecoration: 'none' }}>Home</a>
-    <a href="/about" style={{ color: '#fff', textDecoration: 'none' }}>About</a>
-    <a href="/privacy" style={{ color: '#fff', textDecoration: 'none' }}>Privacy</a>
-    <a href="/terms" style={{ color: '#fff', textDecoration: 'none' }}>Terms</a>
-    <a href="/disclaimer" style={{ color: '#fff', textDecoration: 'none' }}>Disclaimer</a>
+    <nav>
+  <Link href="/">Home     </Link>
+  <Link href="/about">About     </Link>
+  <Link href="/privacy">Privacy     </Link>
+  <Link href="/terms">Terms     </Link>
+  <Link href="/disclaimer">Disclaimer     </Link>
+</nav>
+
   </nav>
   {children}
       </body>
